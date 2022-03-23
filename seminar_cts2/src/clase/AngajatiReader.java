@@ -8,22 +8,25 @@ import java.util.Scanner;
 
 public class AngajatiReader extends AplicantReader{
 
+	public AngajatiReader(String file) throws FileNotFoundException {
+		super(file);
+	}
+
 	@Override
-	public List<Aplicant> readAplicants(String file) throws FileNotFoundException {
-		Scanner input2 = new Scanner(new File(file));
-		input2.useDelimiter(",");
+	public List<Aplicant> readAplicants() throws FileNotFoundException {
+		scanner.useDelimiter(",");
 		List<Aplicant> angajati = new ArrayList<Aplicant>();
 		
-		while (input2.hasNext()) {
+		while (scanner.hasNext()) {
 			Angajat angajat=new Angajat();
-			readAplicant(input2,angajat);
-			int salariu = input2.nextInt();
-			String ocupatie = input2.next();
+			readAplicant(scanner, angajat);
+			int salariu = scanner.nextInt();
+			String ocupatie = scanner.next();
 			angajat.setSalariu(salariu);
 			angajat.setOcupatie(ocupatie);
 			angajati.add(angajat);
 		}
-		input2.close();
+		scanner.close();
 		return angajati;
 	}
 

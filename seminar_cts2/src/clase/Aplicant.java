@@ -1,14 +1,15 @@
 package clase;
 
+import java.util.Arrays;
+
 public abstract class Aplicant{
-	protected static int pragPunctaj;
+	protected static Integer pragPunctaj;
 	protected String nume;
 	protected String prenume;
-	protected int varsta;
-	protected int punctaj;
-	protected int nrProiecte;
+	protected Integer varsta;
+	protected Integer punctaj;
+	protected Integer nrProiecte;
 	protected String[] denumireProiect;
-	
 	
 	public String getNume() {
 		return nume;
@@ -22,23 +23,19 @@ public abstract class Aplicant{
 	public void setPrenume(String prenume) {
 		this.prenume = prenume;
 	}
-	public int getVarsta() {
-		return varsta;
-	}
-	public void setVarsta(int varsta) {
+	
+	public void setVarsta(Integer varsta) {
 		this.varsta = varsta;
 	}
 	public void afiseazaStatus(){
 		System.out.println("Aplicantul "+nume+" "+prenume+(punctaj>=pragPunctaj ? "" : "nu")+" a fost acceptat.");
 	}
-	public int getPunctaj() {
-		return punctaj;
-	}
-	public void setPunctaj(int punctaj) {
+	
+	public void setPunctaj(Integer punctaj) {
 		this.punctaj = punctaj;
 	}
 	
-	public void setPragPunctaj(int pragPunctaj) {
+	public void setPragPunctaj(Integer pragPunctaj) {
 		Aplicant.pragPunctaj=pragPunctaj;
 	}
 
@@ -46,19 +43,8 @@ public abstract class Aplicant{
 		super();
 		// TODO Auto-generated constructor stub
 	}
-	public Aplicant(String nume, String prenume, int varsta, int punctaj, int nrProiecte, String[] denumireProiect) {
-		super();
-		this.nume = nume;
-		this.prenume = prenume;
-		this.varsta = varsta;
-		this.punctaj = punctaj;
-		this.nrProiecte = nrProiecte;
-		this.denumireProiect = denumireProiect;
-	}
-	public int getNrProiecte() {
-		return nrProiecte;
-	}
-	public void setDenumiriProiecte(int nrProiecte,String[] denumiri) {
+
+	public void setDenumiriProiecte(Integer nrProiecte,String[] denumiri) {
 		this.nrProiecte = nrProiecte;
 		denumireProiect=new String[nrProiecte];
 		for(int i=0;i<nrProiecte;i++) {
@@ -66,8 +52,28 @@ public abstract class Aplicant{
 		}
 	}
 	
-	public void afiseazaFinantarePeZi(int sumaPeZi) {
+	public void afiseazaFinantarePeZi(Integer sumaPeZi) {
 		System.out.println("Aplicantul "+getNume()+" "+getPrenume()+" primeste "+sumaPeZi+" Euro/zi in proiect.");
 	}
+	@Override
+	public String toString() {
+		StringBuilder builder = new StringBuilder();
+		builder.append("Aplicant [nume=");
+		builder.append(nume);
+		builder.append(", prenume=");
+		builder.append(prenume);
+		builder.append(", varsta=");
+		builder.append(varsta);
+		builder.append(", punctaj=");
+		builder.append(punctaj);
+		builder.append(", nrProiecte=");
+		builder.append(nrProiecte);
+		builder.append(", denumireProiect=");
+		builder.append(Arrays.toString(denumireProiect));
+		builder.append("]\n");
+		return builder.toString();
+	}
+	
+	
 
 }
